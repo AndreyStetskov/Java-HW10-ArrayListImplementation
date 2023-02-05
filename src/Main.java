@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
@@ -6,7 +5,6 @@ public class Main {
 
         ArrayListImplementation list = new ArrayListImplementation(5);
 
-        ArrayList<Integer> arrayList = new ArrayList<>(5);
         Random random = new Random();
         for (int i = 0; i < 14; i++) {
             list.add(random.nextInt(10, 100));
