@@ -27,27 +27,33 @@ public class ArrayListImplementation {
     }
 
     public int size() {
-        return array.length;
+        return size;
     }
 
     public void displaying() {
-        System.out.println(Arrays.toString(array));
+        System.out.print("[");
+        for (int i = 0; i < size - 1; i++) {
+            System.out.print(array[i] + ", ");
+        }
+        System.out.print(array[size - 1]);
+        System.out.println("]");
     }
 
     public void remove(int index) {
-        int newSize = array.length - 1;
-        int[] smallerArray = new int[newSize];
-
-        System.arraycopy(array, 0, smallerArray, 0, index);
-        System.arraycopy(array, index + 1, smallerArray, index, array.length - index - 1);
-        array = smallerArray;
+        System.arraycopy(array, index + 1, array, index, array.length - index - 1);
+        size --;
     }
 
     public void add(int index, int value){
-        grow();
+//        your comment: "public void add(int index, int value){
+//            grow(); - почему grow вызывается всегда? Всегда будем при add в два раза расти?"
+//        My array grows by 1, not twice. Is it bad to do that?
+            if (array.length == size) {
+            grow();
+        }
 
-        System.arraycopy(array, 0, array, 0, index);
         System.arraycopy(array, index, array, index + 1, array.length - index - 1);
         array[index] = value;
+        size++;
     }
 }
